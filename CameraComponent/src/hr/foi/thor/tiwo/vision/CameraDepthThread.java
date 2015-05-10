@@ -3,7 +3,6 @@ package hr.foi.thor.tiwo.vision;
 import java.awt.image.BufferedImage;
 
 import org.inria.helper.DepthHandler;
-import org.inria.helper.VideoHandler;
 
 public class CameraDepthThread implements Runnable{
 

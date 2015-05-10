@@ -5,5 +5,5 @@ import java.awt.image.BufferedImage;
 public interface CameraInterface {
 	public BufferedImage getSingleImage();
 	public BufferedImage getSingleDepthImage();
-	public void setup();
+	public void setup(int depthFormat, int videoFormat);
 }

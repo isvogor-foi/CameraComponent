@@ -21,10 +21,14 @@ public class CameraInterfaceImpl implements CameraInterface {
 	
 	private CameraDepthThread cdt;
 	private Thread depthThread;
+	
+	private VideoFormat mVideoFormat = VideoFormat.IR_8BIT;
+	private DepthFormat mDepthFormat = DepthFormat.D11BIT;
+
 
 	public CameraInterfaceImpl() {
-		depthHandler = new DepthHandlerImpl(640, 480, DepthFormat.D11BIT);
-		videoHandler = new VideoHandlerImpl(640, 480, VideoFormat.IR_8BIT);
+		depthHandler = new DepthHandlerImpl(640, 480, mDepthFormat);
+		videoHandler = new VideoHandlerImpl(640, 480, mVideoFormat);
 
 		manager = new KinectManager();
 		manager.initializeContext();
@@ -72,9 +76,15 @@ public class CameraInterfaceImpl implements CameraInterface {
 	}
 
 	@Override
-	public void setup() {
-		// TODO Auto-generated method stub
-
+	public void setup(int videoFormat, int depthFormat) {
+		switch(videoFormat){
+			case 1: mVideoFormat = VideoFormat.IR_8BIT; break;
+			case 2: mVideoFormat = VideoFormat.RGB; break;
+		}
+		switch(depthFormat){
+		case 1: mDepthFormat = DepthFormat.D11BIT; break;
+		case 2: mDepthFormat = DepthFormat.D10BIT; break;
+		}
 	}
 
 }
